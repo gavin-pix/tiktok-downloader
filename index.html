@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>TikTok Downloader</title>
+</head>
+<body>
+
+<h2>TikTok / IG Downloader</h2>
+
+<input id="url" placeholder="Paste link TikTok / IG">
+<button onclick="download()">Download</button>
+
+<script>
+function download() {
+  const url = document.getElementById("url").value;
+
+  fetch("https://api.tiklydown.me/api/download?url=" + url)
+    .then(res => res.json())
+    .then(data => {
+      window.open(data.video.noWatermark);
+    })
+    .catch(() => alert("Gagal download"));
+}
+</script>
+
+</body>
+</html>
